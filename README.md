@@ -1,5 +1,4 @@
 # vlcSyncMicro
-<<<<<<< HEAD
  Sync MuseScore Studio 4.5+ to VLC video player 3.0.21+
  
 
@@ -37,6 +36,3 @@ L'Moose on the [MuseScore Forum](https://musescore.org/en/node/376476) aka Moder
 
 ## Release Notes
 v1.0 forthcoming
-=======
- Syncs VLC media player to MuseScore Studio playback
->>>>>>> ee3f024b4bc49a4d699f32f3a76b2ea8fe3183af
