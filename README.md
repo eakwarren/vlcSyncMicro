@@ -1,2 +1,2 @@
 # vlcSyncMicro
- Sync MuseScore Studio to VLC video player
+ Syncs VLC media player to MuseScore Studio playback
