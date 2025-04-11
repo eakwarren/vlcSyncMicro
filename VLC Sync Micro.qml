@@ -37,7 +37,7 @@ MuseScore {
     property int offsetHours: 0
     property int offsetMinutes: 0
     property int offsetSeconds: 0
-    property int offsetMilliseconds: 000
+    property int offsetMilliseconds: 025
     property int offsetTotalSeconds: 0
     property var playbackModel: null
     property real previousPlaybackPosition: 0
@@ -501,7 +501,7 @@ MuseScore {
                 width: 94
                 maxTime: playbackModel.maxPlayTime // ensures offset !> score length
                 maxMillisecondsNumber: 999
-                time: new Date(0, 0, 0, 0, 0, 0, 000) // y, m, d, h, m, s, ms
+                time: new Date(0, 0, 0, 0, 0, 0, 025) // y, m, d, h, m, s, ms
                 onTimeEdited: function(newTime) {
                     console.log("TimeInputField Edited! New value:", newTime);
 
