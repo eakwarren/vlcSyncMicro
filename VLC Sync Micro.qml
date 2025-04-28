@@ -469,8 +469,7 @@ MuseScore {
             FlatButton {
                 id: test
                 toolTipTitle: "Test VLC Connection"
-                iconFont: ui.theme.toolbarIconsFont
-                icon: 62296 // MusescoreIcon.ttf 193 (circling arrows)
+                icon: IconCode.UPDATE
                 width: 30
                 transparent: true
                 anchors.left: parent.left
@@ -485,8 +484,7 @@ MuseScore {
                 id: offset
                 toolTipTitle: "Offsets"
                 toolTipDescription: "Set video offset and ms for playback lag"
-                iconFont: ui.theme.toolbarIconsFont
-                icon: 61212 // MusescoreIcon.ttf 16 (strip w/ rt. arrow)
+                icon: IconCode.CONTINUOUS_VIEW
                 width: 30
                 transparent: true
                 anchors.left: test.right
@@ -499,7 +497,7 @@ MuseScore {
                 anchors.leftMargin: 5
                 anchors.verticalCenter: parent.verticalCenter
                 width: 94
-                maxTime: playbackModel.maxPlayTime // ensures offset !> score length
+                // maxTime: playbackModel.maxPlayTime // ensures offset !> score length
                 maxMillisecondsNumber: 999
                 time: new Date(0, 0, 0, 0, 0, 0, 025) // y, m, d, h, m, s, ms
                 onTimeEdited: function(newTime) {
