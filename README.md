@@ -37,4 +37,4 @@ L'Moose on the [MuseScore Forum](https://musescore.org/en/node/376476) aka Moder
 
 
 ## Release Notes
-v0.9 forthcoming
+v0.9 6/2/25 Initial release.
