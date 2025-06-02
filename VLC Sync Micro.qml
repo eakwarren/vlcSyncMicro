@@ -17,12 +17,12 @@ MuseScore {
     requiresScore: true
     pluginType: "dialog"
     
-    width: 170
-    height: 60
+    width: 165
+    height: 50
     visible: true
     
     // Properties for 4.4
-    title:"VLC Sync Micro"
+    title:"vlcSyncMicro"
     categoryCode:"playback"
     thumbnailName:"vlc.png"
     
@@ -457,96 +457,94 @@ MuseScore {
         UI Layout
     ===================*/
 
-    Column {
+    Item {
+        id: mainItem
         anchors.fill: parent
-        anchors.margins: 10
-        spacing: 10
+        anchors.margins: 3
+        anchors.topMargin: 0
 
-        Item {
+        Column {
+            id: mainColumn
+            spacing: 0
             width: parent.width
-            height: 20
+            height: parent.height
 
-            FlatButton {
-                id: test
-                toolTipTitle: "Test VLC Connection"
-                icon: IconCode.UPDATE
-                width: 30
-                transparent: true
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                onClicked: {
-                    vlcTestConnection();
-                    settingsStatusMessage.text = statusMessage;
-                }
-            }
+            RowLayout {
+                height: 30
+                Layout.fillWidth: true
 
-            FlatButton {
-                id: offset
-                toolTipTitle: "Offsets"
-                toolTipDescription: "Set video offset and ms for playback lag"
-                icon: IconCode.CONTINUOUS_VIEW
-                width: 30
-                transparent: true
-                anchors.left: test.right
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            TimeInputField {
-                id: timeField
-                anchors.left: offset.right
-                anchors.leftMargin: 5
-                anchors.verticalCenter: parent.verticalCenter
-                width: 94
-                // maxTime: playbackModel.maxPlayTime // ensures offset !> score length
-                maxMillisecondsNumber: 999
-                time: new Date(0, 0, 0, 0, 0, 0, 025) // y, m, d, h, m, s, ms
-                onTimeEdited: function(newTime) {
-                    console.log("TimeInputField Edited! New value:", newTime);
-
-                    if (!(newTime instanceof Date) || isNaN(newTime.getTime())) {
-                        console.log("Error: Invalid time value from TimeInputField");
-                        return;
+                FlatButton {
+                    id: test
+                    toolTipTitle: "Test VLC Connection"
+                    icon: IconCode.UPDATE
+                    isNarrow: true
+                    transparent: true
+                    Layout.alignment: Qt.AlignLeft
+                    onClicked: {
+                        vlcTestConnection();
+                        settingsStatusMessage.text = statusMessage;
                     }
+                }
 
-                    // Explicitly set the timeField's time to ensure it's updated
-                    timeField.time = newTime;
+                FlatButton {
+                    id: offset
+                    toolTipTitle: "Set Video Offset"
+                    toolTipDescription: "Set offset (ms for playback lag)"
+                    icon: IconCode.CONTINUOUS_VIEW
+                    transparent: true
+                    Layout.alignment: Qt.AlignLeft
+                }
 
-                    offsetHours = newTime.getHours();
-                    offsetMinutes = newTime.getMinutes();
-                    offsetSeconds = newTime.getSeconds();
-                    offsetMilliseconds = newTime.getMilliseconds();
+                TimeInputField {
+                    id: timeField
+                    Layout.alignment: Qt.AlignLeft
+                    width: 94
+                    maxMillisecondsNumber: 999
+                    time: new Date(0, 0, 0, 0, 0, 0, 025) // y, m, d, h, m, s, ms
+                    onTimeEdited: function(newTime) {
+                        console.log("TimeInputField Edited! New value:", newTime);
 
-                    // Stringify log to match display
-                    console.log("Settings Saved. New Offset: ",
-                                String(offsetHours).padStart(1, "0") + ":" +
-                                String(offsetMinutes).padStart(2, "0") + ":" +
-                                String(offsetSeconds).padStart(2, "0") + ":" +
-                                String(offsetMilliseconds).padStart(3, "0")
-                                );
+                        if (!(newTime instanceof Date) || isNaN(newTime.getTime())) {
+                            console.log("Error: Invalid time value from TimeInputField");
+                            return;
+                        }
+
+                        // Explicitly set the timeField's time to ensure it's updated
+                        timeField.time = newTime;
+
+                        offsetHours = newTime.getHours();
+                        offsetMinutes = newTime.getMinutes();
+                        offsetSeconds = newTime.getSeconds();
+                        offsetMilliseconds = newTime.getMilliseconds();
+
+                        // Stringify log to match display
+                        console.log("Settings Saved. New Offset: ",
+                                    String(offsetHours).padStart(1, "0") + ":" +
+                                    String(offsetMinutes).padStart(2, "0") + ":" +
+                                    String(offsetSeconds).padStart(2, "0") + ":" +
+                                    String(offsetMilliseconds).padStart(3, "0")
+                                    );
+                    }
+                }
+
+            }
+
+            RowLayout {
+                width: parent.width
+                height: 12
+
+                StyledTextLabel {
+                    id: settingsStatusMessage
+                    Layout.alignment: Qt.AlignLeft
+                    // anchors.right: saveButton.left
+                    Layout.rightMargin: 10
+                    Layout.leftMargin: 6
+                    text: statusMessage
+                    color: statusColor
+                    elide: Text.ElideRight
                 }
             }
 
         }
-
-        // Status row NB: A Row tag within Item errors in console
-        Item {
-            width: parent.width
-            height: 12
-
-            StyledTextLabel {
-                id: settingsStatusMessage
-                anchors.left: parent.left
-                // anchors.right: saveButton.left
-                anchors.rightMargin: 10
-                anchors.leftMargin: 6
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.verticalCenterOffset: -1 // for nicer visual alignment
-                text: statusMessage
-                color: statusColor
-                elide: Text.ElideRight
-                horizontalAlignment: Text.AlignLeft
-            }
-        }
-
     }
 }        
