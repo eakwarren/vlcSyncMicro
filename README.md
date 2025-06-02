@@ -1,10 +1,9 @@
 # vlcSyncMicro
  Sync MuseScore Studio 4.5+ to VLC video player 3.0.21+
  
- <img width="170" alt="vlcSyncMicro-light-dark" src="https://github.com/user-attachments/assets/bad5494d-72ca-45f3-9ebe-2efd19ccb27f" />
+<img width="165" alt="vlcSyncMicro" src="https://github.com/user-attachments/assets/f7305873-3c9e-439b-863b-8dc2c005cb71" />
 
-<img width="1307" alt="Screenshot 2025-04-10 at 9 06 17 PM" src="https://github.com/user-attachments/assets/10a2b641-e13a-41e5-a1e9-6b5a4c7b8e4d" />
-
+<img width="1307" alt="Screenshot 2025-04-10 at 9 06 17 PM" src="https://github.com/user-attachments/assets/ed0040bd-2458-4803-a51c-7524e872ebc6" />
 
 
 Developed with ❤️ by Eric Warren
@@ -38,4 +37,4 @@ L'Moose on the [MuseScore Forum](https://musescore.org/en/node/376476) aka Moder
 
 
 ## Release Notes
-v1.0 forthcoming
+v0.9 forthcoming
